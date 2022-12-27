@@ -6,9 +6,8 @@ A simple React library for displaying live scores for football matches in a Worl
 
 - Displays the scores of all ongoing games in a table
 - The games are sorted by total score and those games with the same total score will be returned ordered by the most recently added to our system
-- Updates the scores of all games every 5 seconds
+- Updates the scores of all games every 5 seconds with a goal probability of 0.1 for home team, and 0.5 for away team
 - Removes a game from the scoreboard after 1 minute
-- Simulates adding a goal with a probability of 0.1 for home team, and 0.05 for away team
 
 ## Installation
 
