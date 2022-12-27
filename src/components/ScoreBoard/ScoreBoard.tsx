@@ -11,6 +11,7 @@ import {
 
 import { IGames, IScores } from "./models";
 import { millisToMinutesAndSeconds } from "utils";
+import "./ScoreBoard.css";
 
 const games: IGames[] = [
   { homeTeam: "Mexico", awayTeam: "Canada" },
@@ -75,43 +76,45 @@ export const ScoreBoard: FC = memo(() => {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="scoreboard">
-        <TableHead>
-          <TableRow>
-            <TableCell>Home Team</TableCell>
-            <TableCell align="right">Away Team</TableCell>
-            <TableCell align="right">Home Score</TableCell>
-            <TableCell align="right">Away Score</TableCell>
-            <TableCell align="right">Current Minute</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {getSummary().map((score, index) => (
-            <TableRow key={index} data-testid="score-row">
-              <TableCell
-                component="th"
-                scope="row"
-                data-testid="home-team-cell"
-              >
-                {score.homeTeam}
-              </TableCell>
-              <TableCell align="right" data-testid="away-team-cell">
-                {score.awayTeam}
-              </TableCell>
-              <TableCell align="right" data-testid="home-score-cell">
-                {score.homeScore}
-              </TableCell>
-              <TableCell align="right" data-testid="away-score-cell">
-                {score.awayScore}
-              </TableCell>
-              <TableCell align="right" data-testid="away-score-cell">
-                {millisToMinutesAndSeconds(Date.now() - score.gameStartTime)}
-              </TableCell>
+    <div className="container">
+      <TableContainer component={Paper}>
+        <Table aria-label="scoreboard">
+          <TableHead>
+            <TableRow>
+              <TableCell>Home Team</TableCell>
+              <TableCell align="right">Away Team</TableCell>
+              <TableCell align="right">Home Score</TableCell>
+              <TableCell align="right">Away Score</TableCell>
+              <TableCell align="right">Current Minute</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {getSummary().map((score, index) => (
+              <TableRow key={index} data-testid="score-row">
+                <TableCell
+                  component="th"
+                  scope="row"
+                  data-testid="home-team-cell"
+                >
+                  {score.homeTeam}
+                </TableCell>
+                <TableCell align="right" data-testid="away-team-cell">
+                  {score.awayTeam}
+                </TableCell>
+                <TableCell align="right" data-testid="home-score-cell">
+                  {score.homeScore}
+                </TableCell>
+                <TableCell align="right" data-testid="away-score-cell">
+                  {score.awayScore}
+                </TableCell>
+                <TableCell align="right" data-testid="away-score-cell">
+                  {millisToMinutesAndSeconds(Date.now() - score.gameStartTime)}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 });
