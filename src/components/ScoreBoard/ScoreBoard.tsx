@@ -27,18 +27,16 @@ export const ScoreBoard: FC = memo(() => {
       ...game,
       homeScore: 0,
       awayScore: 0,
-      duration: 1 * 60 * 1000, // 1 minute in milliseconds
+      duration: 1 * 60 * 1000,
       gameStartTime: Date.now(),
       lastGoal: Date.now(),
     }))
   );
 
   useEffect(() => {
-    // This simulates updating the score every 5 seconds
     const interval = setInterval(() => {
       setScores(
         scores.map((score) => {
-          // This simulates adding a goal with a probability of 0.1 for home team
           if (Math.random() < 0.1) {
             return {
               ...score,
